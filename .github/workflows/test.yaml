@@ -1,0 +1,28 @@
+name: Run Tests for All Microservices
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.23'
+
+      # Step 3: Run the test script
+      - name: Execute Test Script
+        run: ./run-tests.sh

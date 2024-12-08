@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .email-body {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .email-body h1 {
+            font-size: 22px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .email-body p {
+            margin: 10px 0;
+        }
+        .verify-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .verify-button:hover {
+            background-color: #45a049;
+        }
+        .email-footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #666666;
+            font-size: 12px;
+        }
+        .email-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .email-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            Welcome to E-Commerce Project!
+        </div>
+        <div class="email-body">
+            <h1>Verify Your Email Address</h1>
+            <p>Hi</p>
+            <p>Thank you for signing up with us! To complete your registration, please verify your email address by clicking the button below:</p>
+            <p><a href="{{.Link}}" class="verify-button">Verify Email</a></p>
+            <p>If the button doesn't work, copy and paste the following link into your browser:</p>
+            <p><a href="{{.Link}}">{{.Link}}</a></p>
+            <p>If you didn't create an account, you can safely ignore this email.</p>
+            <p>Cheers,<br>The E-Commerce Project Team</p>
+        </div>
+        <div class="email-footer">
+            <p>&copy; 2024 E-Commerce Project. All rights reserved.</p>
+            <p><a href="example.com">Visit our website</a></p>
+        </div>
+    </div>
+</body>
+</html>

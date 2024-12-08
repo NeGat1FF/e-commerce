@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/NeGat1FF/notification-service/proto/mail";
+
+service MailService {
+    rpc SendMail (MailRequest) returns (MailResponse) {}
+}
+
+message MailRequest {
+    repeated string to = 1;
+    NotificationType type = 2;
+    map<string,string> data = 3;
+}
+
+message MailResponse {
+    bool success = 1;
+}
+
+enum NotificationType {
+    EMAIL_CONFIRMATION = 0;
+    PASSWORD_RESET = 1;
+}
+
