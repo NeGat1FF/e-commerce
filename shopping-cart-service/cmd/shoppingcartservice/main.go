@@ -47,7 +47,7 @@ func main() {
 	group.GET("", handler.GetItems)
 	group.DELETE("", handler.DeleteCart)
 
-	err = ginServer.Run(":" + config.GetConfig().SERVER_PORT)
+	err = ginServer.Run(":8080")
 	if err != nil {
 		panic(err)
 	}

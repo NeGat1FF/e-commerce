@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net"
 
 	"github.com/NeGat1FF/e-commerce/product-service/internal/cache"
@@ -50,7 +49,7 @@ func main() {
 
 	s := grpc.NewServer()
 
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", config.GRPCPort))
+	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {
 		logger.Logger.Error("Failed to listen", zap.Error(err))
 		panic(err)
@@ -86,5 +85,5 @@ func main() {
 	group.GET("/:id", productHandler.GetProductByID)
 	group.GET("/", productHandler.GetProductsByCategory)
 
-	ginServer.Run(fmt.Sprintf(":%s", config.ServerPort))
+	ginServer.Run(":8080")
 }

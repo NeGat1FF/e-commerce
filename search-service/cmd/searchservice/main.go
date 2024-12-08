@@ -1,8 +1,7 @@
 package main
 
 import (
-	"os"
-
+	"github.com/NeGat1FF/e-commerce/search-service/internal/config"
 	"github.com/NeGat1FF/e-commerce/search-service/internal/elasticsearch"
 	"github.com/NeGat1FF/e-commerce/search-service/internal/handlers"
 	messagequeue "github.com/NeGat1FF/e-commerce/search-service/internal/messageQueue"
@@ -18,20 +17,24 @@ func main() {
 
 	logger.Init("info")
 
-	cfg := es.Config{
-		APIKey:   os.Getenv("ELASTICSEARCH_URL"),
-		Username: "search_service",
-		Password: "search_service",
+	cfg := config.LoadConfig()
+
+	esCfg := es.Config{
+		Addresses: []string{
+			cfg.ElasticURL,
+		},
+		Username: cfg.ElasticUsername,
+		Password: cfg.ElasticPassword,
 	}
 
 	// Connect to Elasticsearch
-	esClient, err := elasticsearch.NewElasticClient(cfg, "products")
+	esClient, err := elasticsearch.NewElasticClient(esCfg, "products")
 	if err != nil {
 		panic(err)
 	}
 
 	// Connect to RabbitMQ
-	conn, err := messagequeue.ConnectRabbitMQ(os.Getenv("RABBITMQ_URL"))
+	conn, err := messagequeue.ConnectRabbitMQ(cfg.MessageBrokerURL)
 	if err != nil {
 		panic(err)
 	}
@@ -60,7 +63,7 @@ func main() {
 	router.GET("/api/v1/products/search", searchHandler.SearchProducts)
 
 	// Start the HTTP server
-	err = router.Run(":8090")
+	err = router.Run(":8080")
 	if err != nil {
 		panic(err)
 	}

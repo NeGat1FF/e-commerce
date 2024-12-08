@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+  labels:
+    app: notification-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+      - name: notification-service
+        image: negat1ff/notification-service:latest
+        ports:
+        - containerPort: 50051
+        env:
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: jwt-secret-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-service
+  labels:
+    app: notification-service
+spec:
+  selector:
+    app: notification-service
+  ports:
+  - protocol: TCP
+    port: 50051
+    targetPort: 50051

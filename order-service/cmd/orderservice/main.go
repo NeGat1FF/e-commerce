@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/NeGat1FF/e-commerce/order-service/internal/config"
@@ -50,7 +49,7 @@ func main() {
 	mux.HandleFunc("PUT api/v1/orders/{id}", orderHandler.UpdateOrder)
 
 	// Create a new server
-	err = http.ListenAndServe(fmt.Sprintf(":%s", config.GetConfig().SERVER_PORT), http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	err = http.ListenAndServe(":8080", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		defer func() {
 			if r := recover(); r != nil {

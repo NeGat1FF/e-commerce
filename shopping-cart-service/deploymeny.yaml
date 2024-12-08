@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service
+  name: shopping-cart-service
   labels:
-    app: user-service
+    app: shopping-cart-service
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: user-service
+      app: shopping-cart-service
   template:
     metadata:
       labels:
-        app: user-service
+        app: shopping-cart-service
     spec:
       containers:
-      - name: user-service
-        image: negat1ff/user-service:latest
+      - name: shopping-cart-service
+        image: negat1ff/shopping-cart-service:latest
         ports:
         - containerPort: 8080
         env:
@@ -26,20 +26,20 @@ spec:
               name: secrets
               key: jwt-secret-key
         - name: DATABASE_URL
-          value: "jdbc:postgresql://user-db:5432/shopping_cart"
-        - name: NOTIFICATION_SERVICE_URL
+          value: "jdbc:postgresql://shopping-cart-db:5432/shopping_cart"
+        - name: PRICE_SERVICE
           value: "http://price-service:8083"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service
+  name: shopping-cart-service
   labels:
-    app: user-service
+    app: shopping-cart-service
 spec:
   selector:
-    app: user-service
+    app: shopping-cart-service
   ports:
   - protocol: TCP
-    port: 8085
+    port: 8084
     targetPort: 8080

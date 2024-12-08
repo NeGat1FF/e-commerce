@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  mongodb-product:
+    image: mongo:latest
+    volumes:
+      - mongodb-product-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis:latest
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+  rabbitmq:
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmq_user
+      RABBITMQ_DEFAULT_PASS: rabbitmq_password
+    ports:
+      - "15672:15672" # RabbitMQ Management UI
+
+  elasticsearch:
+    image: bitnami/elasticsearch:latest
+    environment:
+      - discovery.type=single-node
+      - ELASTICSEARCH_SKIP_TRANSPORT_TLS=true
+      - ELASTICSEARCH_ENABLE_REST_TLS=false
+      - ELASTICSEARCH_ENABLE_SECURITY=true
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200" # Elasticsearch
+      - "9300:9300" # Elasticsearch transport
+
+  kibana:
+    image: bitnami/kibana:latest
+    environment:
+      - KIBANA_CREATE_USER=true
+      - KIBANA_PASSWORD=password
+      - KIBANA_ELASTICSEARCH_PASSWORD=bitnami
+    ports:
+      - "5601:5601" # Kibana
+
+
+volumes:
+  postgres-data:
+  mongodb-product-data:
+  elasticsearch-data:

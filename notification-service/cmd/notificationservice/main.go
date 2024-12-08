@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -28,7 +27,7 @@ func main() {
 
 	server := server.NewServer(sender)
 
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", cfg.ServerPort))
+	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {
 		panic(err)
 	}

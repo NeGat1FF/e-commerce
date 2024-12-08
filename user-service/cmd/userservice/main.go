@@ -56,7 +56,7 @@ func main() {
 	route.PATCH("/update", handler.UpdateUser)
 	route.DELETE("/delete", handler.DeleteUser)
 
-	err = ginServer.Run(":8050")
+	err = ginServer.Run(":8080")
 	if err != nil {
 		logger.Logger.Fatal("Failed to start the server", zap.Error(err))
 	}

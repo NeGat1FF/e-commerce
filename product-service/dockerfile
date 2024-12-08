@@ -18,4 +18,6 @@ WORKDIR /root/
 
 COPY --from=builder /app/product-service .
 
+EXPOSE 8080
+EXPOSE 50051
 CMD ["./product-service"]

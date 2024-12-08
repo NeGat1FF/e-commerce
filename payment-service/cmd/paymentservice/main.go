@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/NeGat1FF/e-commerce/payment-service/internal/config"
@@ -30,7 +29,7 @@ func main() {
 	mux.HandleFunc("GET /api/v1/payments/{id}", handler.GetPaymentByID)
 	mux.HandleFunc("POST /api/v1/webhook", handler.UpdatePaymentStatus)
 
-	err = http.ListenAndServe(fmt.Sprintf(":%s", cfg.ServerPort), mux)
+	err = http.ListenAndServe(":8080", mux)
 	if err != nil {
 		panic(err)
 	}

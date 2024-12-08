@@ -12,8 +12,6 @@ type Config struct {
 
 func LoadConfig() *Config {
 	return &Config{
-		Addr:             os.Getenv("SERVICE_ADDR"),
-		Port:             os.Getenv("SERVICE_PORT"),
 		JWTSecret:        os.Getenv("JWT_SECRET"),
 		DB_URL:           os.Getenv("DB_URL"),
 		NOTIFICATION_URL: os.Getenv("NOTIFICATION_SERVICE_URL"),
