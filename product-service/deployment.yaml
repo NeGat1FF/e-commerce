@@ -30,7 +30,7 @@ spec:
         - name: MESSAGE_BROKER_EXCHANGE
           value: productExchange
         - name: CACHE_URL
-          value: redis://192.168.31.56:6379
+          value: redis://default:password@192.168.31.56:6379
 ---
 apiVersion: v1
 kind: Service

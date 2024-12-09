@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: order-service.local # Replace with your domain or use external IP if testing
+  - host: order.example.com  # Replace with your domain or use external IP if testing
     http:
       paths:
       - path: /
@@ -16,7 +16,7 @@ spec:
             name: order-service
             port:
               number: 8080
-  - host: payment-service.local # Replace with your domain or use external IP if testing
+  - host: payment.example.com # Replace with your domain or use external IP if testing
     http:
       paths:
       - path: /
@@ -26,7 +26,7 @@ spec:
             name: payment-service
             port:
               number: 8081
-  - host: product-service.local # Replace with your domain or use external IP if testing
+  - host: product.example.com # Replace with your domain or use external IP if testing
     http:
       paths:
       - path: /
@@ -36,7 +36,7 @@ spec:
             name: product-service
             port:
               number: 8082
-  - host: search-service.local # Replace with your domain or use external IP if testing
+  - host: search.example.com # Replace with your domain or use external IP if testing
     http:
       paths:
       - path: /
@@ -46,7 +46,7 @@ spec:
             name: search-service
             port:
               number: 8083
-  - host: cart-service.local # Replace with your domain or use external IP if testing
+  - host: cart.example.com # Replace with your domain or use external IP if testing
     http:
       paths:
       - path: /
@@ -56,7 +56,7 @@ spec:
             name: shopping-cart-service
             port:
               number: 8084
-  - host: user-service.local # Replace with your domain or use external IP if testing
+  - host: user.example.com # Replace with your domain or use external IP if testing
     http:
       paths:
       - path: /

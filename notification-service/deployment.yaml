@@ -24,7 +24,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: secrets
-              key: jwt-secret-key
+              key: mailtrap-api-key
 ---
 apiVersion: v1
 kind: Service
