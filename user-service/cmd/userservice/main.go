@@ -22,7 +22,7 @@ func main() {
 
 	config := config.LoadConfig()
 
-	db, err := db.InitDB("postgres://user:password@localhost:5432/e-commerce")
+	db, err := db.InitDB(config.DATABASE_URL)
 	if err != nil {
 		logger.Logger.Fatal("Failed to connect to the database", zap.Error(err))
 	}

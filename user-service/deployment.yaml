@@ -26,9 +26,9 @@ spec:
               name: secrets
               key: jwt-secret-key
         - name: DATABASE_URL
-          value: "jdbc:postgresql://user-db:5432/shopping_cart"
+          value: "postgresql://user:password@192.168.31.56:5432/user_db"
         - name: NOTIFICATION_SERVICE_URL
-          value: "http://price-service:8083"
+          value: "notification-service:50051"
 ---
 apiVersion: v1
 kind: Service

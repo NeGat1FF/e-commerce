@@ -35,6 +35,7 @@ services:
       RABBITMQ_DEFAULT_USER: rabbitmq_user
       RABBITMQ_DEFAULT_PASS: rabbitmq_password
     ports:
+      - "5672:5672" # RabbitMQ
       - "15672:15672" # RabbitMQ Management UI
 
   elasticsearch:

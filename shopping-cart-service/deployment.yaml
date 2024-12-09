@@ -26,9 +26,9 @@ spec:
               name: secrets
               key: jwt-secret-key
         - name: DATABASE_URL
-          value: "jdbc:postgresql://shopping-cart-db:5432/shopping_cart"
+          value: "postgresql://user:password@192.168.31.56:5432/cart_db"
         - name: PRICE_SERVICE
-          value: "http://price-service:8083"
+          value: "product-service:50052"
 ---
 apiVersion: v1
 kind: Service
