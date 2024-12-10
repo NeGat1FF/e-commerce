@@ -154,35 +154,3 @@ func (m *EmailSender) SendMail(to []string, tp EmailType, data map[string]string
 
 	return nil
 }
-
-// func main() {
-
-// 	url := "https://send.api.mailtrap.io/api/send"
-// 	method := "POST"
-
-// 	payload := strings.NewReader(`{\"from\":{\"email\":\"hello@demomailtrap.com\",\"name\":\"Mailtrap Test\"},\"to\":[{\"email\":\"worldalex1@gmail.com\"}],\"subject\":\"You are awesome!\",\"text\":\"Congrats for sending test email with Mailtrap!\",\"category\":\"Integration Test\"}`)
-
-// 	client := &http.Client{}
-// 	req, err := http.NewRequest(method, url, payload)
-
-// 	if err != nil {
-// 		fmt.Println(err)
-// 		return
-// 	}
-// 	req.Header.Add("Authorization", "Bearer ***REMOVED***")
-// 	req.Header.Add("Content-Type", "application/json")
-
-// 	res, err := client.Do(req)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 		return
-// 	}
-// 	defer res.Body.Close()
-
-// 	body, err := ioutil.ReadAll(res.Body)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 		return
-// 	}
-// 	fmt.Println(string(body))
-// }
